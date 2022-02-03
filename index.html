@@ -13,18 +13,23 @@
     <script type="text/javascript" src="src/scripts/mouse-animation.js"></script>
 </head>
 <body>
+    <!--Cursor DIV-->
     <div class="cursor"></div>
     <br><br><br><br><br><br><br>
+    <!--Main Title-->
     <h1>Password Strength Checker</h1>
     <br><br><br>
     <div class="wrapper">
         <div class="container">
+            <!--Password Input-->
             <input type="password" id="password" oninput="strengthChecker()">
+            <!--Eye-Toggler-->
             <span id="toggle" onclick="toggle()">
                 <i class="fas fa-eye"></i>
             </span>
             <div id="strength-bar"></div>
         </div>
+        <!--Sub-message-->
         <p id="msg">Please enter a password!</p>
     </div>
     </body>

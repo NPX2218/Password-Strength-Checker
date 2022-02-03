@@ -1,4 +1,4 @@
-
+//Setting the parameter object
 let parameters = {
     count : false,
     letters : false,
@@ -6,16 +6,23 @@ let parameters = {
     special : false
 }
 
+//Getting elements from the HTML page
 let strengthBar = document.getElementById("strength-bar");
 let msg = document.getElementById("msg");
 let currentPageColor = "#ac92eb";
 
+// Check the strength function
 function strengthChecker(){
     let password = document.getElementById("password").value;
+    
+    //Checking if the password entry is none, then we reset everything 
     if(password==""){
         document.body.style.background = "#ac92eb";
-        msg.textContent = "Please enter a password!"    
+        msg.textContent = "Please enter a password!"
+        currentPageColor = "#ac92eb";    
     }
+    
+    //Checking if it satisfies the requirements
     parameters.letters = (/[A-Za-z]+/.test(password))?true:false;
     parameters.numbers = (/[0-9]+/.test(password))?true:false;
     parameters.special = (/[!\"$%&/()=?@~`\\.\';:+=^*_-]+/.test(password))?true:false;
@@ -25,17 +32,18 @@ function strengthChecker(){
 
     //console.log(Object.values(parameters), barLength);
 
+    //Adding to the strength bar
     strengthBar.innerHTML = "";
-    for( let i in barLength){
+    for(let i in barLength){
         let span = document.createElement("span");
         span.classList.add("strength");
         strengthBar.appendChild(span);
     }
 
-
     let spanRef = document.getElementsByClassName("strength");
     for(let i = 0; i < spanRef.length; i++){
         switch(spanRef.length - 1){
+            //Checking the different cases, if the password is weak or not
             case 0 :
                 spanRef[i].style.background = "#ff3e36";
                 msg.textContent = "Your password is very weak ❌";
@@ -64,12 +72,7 @@ function strengthChecker(){
     }
 }
 
-function checkDelete(){
-    if(document.getElementById("password").value == ""){
-        document.body.style.background = "#0be881";
-    }
-}
-
+//Function for checking on eye toggle to see/hide password
 function toggle(){
     let password = document.getElementById("password");
     let eye = document.getElementById("toggle");
@@ -77,7 +80,6 @@ function toggle(){
     if(password.getAttribute("type") == "password"){
         password.setAttribute("type","text");
         eye.style.color = currentPageColor;
-        //eye.style.color = "#0be881";
     }
     else{
         password.setAttribute("type","password");
