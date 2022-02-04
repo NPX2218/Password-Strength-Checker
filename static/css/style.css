@@ -80,3 +80,12 @@ p {
   text-align: center;
   margin-top: 20px;
 }
+
+a {
+  position: absolute;
+  font-family: "Poppins";
+  font-size: 15px;
+  bottom: 10%;
+  right: 40%;
+  color: white;
+}
